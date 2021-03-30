@@ -26,7 +26,7 @@ movie "name","year","place","category","language","douban_score","dou_form","imb
 ```
 python Cinema_Paradise.py train
 ```
-ps: 程序主要练习了数据需要通过点进子链接爬取
+ps: 程序主要练习了数据需要通过点进子链接爬取,例如淘宝商品信息
 ## Reference
 [https://www.bilibili.com/video/BV1i54y1h75W]
   
