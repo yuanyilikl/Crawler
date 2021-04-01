@@ -3,10 +3,15 @@ import re
 import csv
 
 class Config(object):
+    url = "https://movie.douban.com/top250"
+    head = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.57"
+    }
     data_start = 0     #  it has to be multiple of 20
     data_end   = 250
-    is_down    = True
-    save_path  = "douban_top250_data_1.csv"
+    is_down    = False
+    save_path  = "douban_top250_data.csv"
+    save_path1 = "douban_top250_data_1.csv"  # if is_down = True, then save_path = save_path1
 
 opt = Config()
 
@@ -15,10 +20,8 @@ def train(**kwargs):
     for k_, v_ in kwargs.items():
         setattr(opt, k_, v_)
 
-    url = "https://movie.douban.com/top250"
-    head = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.57"
-    }
+    url = opt.url
+    head = opt.head
 
     for page_start in range(opt.data_start, opt.data_end, 20):
 
@@ -38,9 +41,9 @@ def train(**kwargs):
         
         # save data
         if opt.is_down:
-            path = opt.save_path
+            path = opt.save_path1
         else:
-            path = "douban_top250_data.csv"
+            path = opt.save_path
 
         with open(path, mode = "a+", encoding = "utf-8", newline='') as f:
             csvwriter = csv.writer(f)
