@@ -6,12 +6,14 @@ There are some example of crawler.
 * douban: [movie top250](https://movie.douban.com/top250)
 * cinema paradise: [a must-watch movie in 2020](https://www.dy2018.com/index.html)
 * vegetable price : [beijing xinfadi ](http://www.xinfadi.com.cn/marketanalysis/0/list/1.shtml)
+* zhubajie: [eg:"kw"=python](https://www.zbj.com/search/f/?type=new&kw=python)
 ## Environment
 
 
 * requests
 * re
 * bs4
+* lxml
 * csv
 
 ## Usage
@@ -33,11 +35,18 @@ ps: 程序主要练习了数据需要通过点进子链接爬取,例如淘宝商
 
 **3. BeautifulSoup_VegetablePrice.py**  
 The crawling data variables are as follows:
-movie "name","low","avg","high","size","unit","date".
+vegetable: "name","low","avg","high","size","unit","date".
 ```
 python BeautifulSoup_VegetablePrice.py train --max_page=4
 ```
-ps: 程序主要联系了利用bs4解析网络，爬取数据。
+ps: 程序主要练习了利用bs4解析网络，爬取数据。
+**4. xpath_zhubajie.py**  
+The crawling data variables are as follows:
+Depending on your keywords searching for service providers:"name","price","turnover","advert".
+```
+python xpath_zhubajie.py train --kw="python"
+```
+ps: 程序主要练习了利用xpath解析网络，爬取数据。
 ## Reference
 [https://www.bilibili.com/video/BV1i54y1h75W]
   
